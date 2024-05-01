@@ -30,4 +30,12 @@ public class BaseGlobalExceptionHandler {
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
+
+    //arumar as exceções personalizadas
+    //construir o readme
+    //desenhar a arquitetura do programa
+    //explicar minha linha de raciocinio
+    //separar massas
+    //utilizar o yaml
+
 }
