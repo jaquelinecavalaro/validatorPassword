@@ -1,5 +1,6 @@
 package com.example.validatorPassword.service;
 
+import com.example.validatorPassword.exceptions.MinimumLengthException;
 import org.springframework.stereotype.Service;
 
 import java.util.regex.Pattern;
