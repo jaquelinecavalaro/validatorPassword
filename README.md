@@ -39,7 +39,11 @@ mvn spring-boot:run
 ``` 
 
 Após executar o script você poderá acessar os
-endpoints pelo endereço: http://localhost:8090/swagger-ui/index.html
+endpoints pelo endereço: http://localhost:8090/swagger-ui/index.html#
 
 Lembre-se de pegar a chave gerada em seu console para realizar o acesso.
 
+### Rodar teste de mutação
+```
+mvn org.pitest:pitest-maven:mutationCoverage
+``` 

@@ -3,6 +3,7 @@ package com.example.validatorPassword.service.impl;
 import com.example.validatorPassword.service.PasswordValidatorService;
 import org.springframework.stereotype.Service;
 
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Service
@@ -12,7 +13,7 @@ public class PasswordValidatorServiceImpl implements PasswordValidatorService {
     @Override
     public boolean getValidatePassword(String password) {
         return hasMinimumLength(password) &&
-                hasDigit(password) &&
+                hasDigitNumber(password) &&
                 hasLowerCaseLetter(password) &&
                 hasUpperCaseLetter(password) &&
                 hasSpecialCharacter(password) &&
@@ -25,8 +26,8 @@ public class PasswordValidatorServiceImpl implements PasswordValidatorService {
         return password != null && password.length() >= 9 && !password.contains(" ");
     }
 
-    //verifica se há ao menos um digito
-    private boolean hasDigit(String password) {
+    //verifica se há ao menos um digito numerico
+    private boolean hasDigitNumber(String password) {
         Pattern digitPattern = Pattern.compile(".*\\d.*");
         return digitPattern.matcher(password).matches();
     }
@@ -51,8 +52,18 @@ public class PasswordValidatorServiceImpl implements PasswordValidatorService {
 
     //verifica se não há caracter repetido
     private boolean hasNoRepeatedCharacters(String password) {
-        Pattern noRepeatPattern = Pattern.compile("^(?!.*(.).*\\1).*$");
-        return noRepeatPattern.matcher(password).matches();
+        // ignorando uppercase e lowercase
+        String lowercasePassword = password.toLowerCase();
+
+        // Verifica se há letras repetidas
+        for (int i = 0; i < lowercasePassword.length(); i++) {
+            char currentChar = lowercasePassword.charAt(i);
+            if (Character.isLetter(currentChar) && lowercasePassword.substring(i + 1).contains(String.valueOf(currentChar))) {
+                return false;
+            }
+        }
+        return true;
     }
+
 
 }
