@@ -1,5 +1,6 @@
 package com.example.validatorPassword.controller;
 
+import com.example.validatorPassword.exceptions.InvalidPasswordException;
 import com.example.validatorPassword.service.PasswordValidatorService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,8 +19,10 @@ public class PasswordValidatorController {
     }
 
     @GetMapping("/validate-password")
-    public ResponseEntity<Boolean> getValidatePassword(@RequestParam String password) {
-        boolean isValid = passwordValidatorService.getValidatePassword(password);
-        return ResponseEntity.ok(isValid);
+    public ResponseEntity<Boolean> getValidatePassword(@RequestParam(required = true) String password) {
+        if (password == null || password.isEmpty()) {
+            throw new InvalidPasswordException("Invalid parameter type");
+        }
+        return ResponseEntity.ok(passwordValidatorService.getValidatePassword(password));
     }
 }
