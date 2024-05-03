@@ -46,7 +46,11 @@ Lembre-se de pegar a chave gerada em seu console para realizar o acesso.
 ### Rodar teste de mutação
 ```
 mvn org.pitest:pitest-maven:mutationCoverage
-``` 
+```
+### Refinamento tecnico
+```
+https://docs.google.com/document/d/16fYiZXYyAd6u2e5GlCbtbha7q540T4RjzkYjfKLgAsE/edit?usp=sharing
+```
 ### Desenho da arquitetura
 
 ![img.png](img.png)
