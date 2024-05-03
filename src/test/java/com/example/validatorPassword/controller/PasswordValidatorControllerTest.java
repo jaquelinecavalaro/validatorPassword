@@ -57,11 +57,11 @@ public class PasswordValidatorControllerTest {
     @DisplayName("should return error when input is null")
     public void getValidatePasswordShouldReturnError() {
         when(passwordValidatorService.getValidatePassword(any())).thenReturn(null);
-
+        //TODO corrigir
         var response = passwordValidatorController.getValidatePassword(null);
 
         assertNotNull(response);
-        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
         assertEquals(false, response.getBody());
     }
 
