@@ -90,6 +90,10 @@
 					<targetTests>
 						<param>com.example.validatorPassword.*</param>
 					</targetTests>
+					<excludedClasses>
+						<param>com.example.validatorPassword.exceptions*</param>
+						<param>com.example.validatorPassword.enums*</param>
+					</excludedClasses>
 				</configuration>
 			</plugin>
 		</plugins>
