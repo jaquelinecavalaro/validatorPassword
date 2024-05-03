@@ -3,7 +3,6 @@ package com.example.validatorPassword.service.impl;
 import com.example.validatorPassword.service.PasswordValidatorService;
 import org.springframework.stereotype.Service;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Service
@@ -12,12 +11,13 @@ public class PasswordValidatorServiceImpl implements PasswordValidatorService {
     //minha regra de negócio
     @Override
     public boolean getValidatePassword(String password) {
-        return hasMinimumLength(password) &&
-                hasDigitNumber(password) &&
-                hasLowerCaseLetter(password) &&
-                hasUpperCaseLetter(password) &&
-                hasSpecialCharacter(password) &&
-                hasNoRepeatedCharacters(password);
+            return hasMinimumLength(password) &&
+                    hasDigitNumber(password) &&
+                    hasLowerCaseLetter(password) &&
+                    hasUpperCaseLetter(password) &&
+                    hasSpecialCharacter(password) &&
+                    hasNoRepeatedCharacters(password);
+
     }
 
     //verifica minimo de caracter e se há espaço em branco
